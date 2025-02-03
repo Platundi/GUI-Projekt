@@ -1,11 +1,296 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../dist/output.css" rel="stylesheet" />
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="../dist/output.css" rel="stylesheet" />
+	</head>
+	<body class="flex flex-col min-h-screen">
+		<!-- Navbar -->
+		<nav class="bg-primary_light text-primary sticky top-0 w-full">
+			<div class="container mx-auto flex items-center justify-between p-4">
+				<!-- Logo -->
+				<a id="logo" href="./index.html" class="text-2xl font-bold"
+					>Thomas<span class="text-secondary">Trainings</span>Tool</a
+				>
+
+				<!-- Desktopnavigation -->
+				<ul class="hidden md:flex space-x-6 text-lg">
+					<li>
+						<a
+							href="./index.html"
+							class="hover:text-secondary transition duration-300"
+							>Home</a
+						>
+					</li>
+					<li>
+						<a
+							href="./uebungen.html"
+							class="hover:text-secondary transition duration-300"
+							>Übungen</a
+						>
+					</li>
+					<li>
+						<a
+							href="./trainingsplaene.html"
+							class="hover:text-secondary transition duration-300"
+							>Trainingspläne</a
+						>
+					</li>
+					<li>
+						<a href="#" class="hover:text-secondary transition duration-300"
+							>Kontakt</a
+						>
+					</li>
+				</ul>
+				<!-- Mobile Menu Button -->
+				<button class="md:hidden focus:outline-none" onclick="toggleMenu()">
+					<!-- https://icons8.com/icons/set/hamburger-button--white -->
+					<svg
+						class="w-8 h-8 text-primary fill-primary"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect x="4" y="6" width="16" height="2" />
+						<rect x="4" y="11" width="16" height="2" />
+						<rect x="4" y="16" width="16" height="2" />
+					</svg>
+				</button>
+			</div>
+			<!-- Mobilavigation -->
+			<div
+				id="mobile-menu"
+				class="hidden md:hidden bg-primary_light text-primary h-full container mx-auto"
+			>
+				<ul class="text-center text-lg space-y-4 p-4">
+					<li>
+						<a
+							href="./index.html"
+							class="block hover:text-secondary transition duration-300"
+							>Home</a
+						>
+					</li>
+					<li>
+						<a
+							href="./uebungen.html"
+							class="block hover:text-secondary transition duration-300"
+							>Übungen</a
+						>
+					</li>
+					<li>
+						<a
+							href="./trainingsplaene.html"
+							class="block hover:text-secondary transition duration-300"
+							>Trainingspläne</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="block hover:text-secondary transition duration-300"
+							>Kontakt</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div
+			class="container mx-auto flex-col md:flex-row items-center justify-between p-4 flex-1"
+		>
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam
+			debitis dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing
+			elit. Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa
+			possimus quisquam facere voluptatibus eaque velit cumque repellendus
+			ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit, amet
+			consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam optio
+			sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit cumque
+			repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit,
+			amet consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam
+			optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit
+			cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor
+			sit, amet consectetur adipisicing elit. Error aliquam debitis dolor ad
+			ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque
+			velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum
+			dolor sit, amet consectetur adipisicing elit. Error aliquam debitis dolor
+			ad ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus
+			eaque velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem
+			ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam debitis
+			dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing
+			elit. Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa
+			possimus quisquam facere voluptatibus eaque velit cumque repellendus
+			ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit, amet
+			consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam optio
+			sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit cumque
+			repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit,
+			amet consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam
+			optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit
+			cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor
+			sit, amet consectetur adipisicing elit. Error aliquam debitis dolor ad
+			ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque
+			velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum
+			dolor sit, amet consectetur adipisicing elit. Error aliquam debitis dolor
+			ad ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus
+			eaque velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem
+			ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam debitis
+			dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing
+			elit. Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa
+			possimus quisquam facere voluptatibus eaque velit cumque repellendus
+			ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit, amet
+			consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam optio
+			sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit cumque
+			repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit,
+			amet consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam
+			optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit
+			cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor
+			sit, amet consectetur adipisicing elit. Error aliquam debitis dolor ad
+			ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque
+			velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum
+			dolor sit, amet consectetur adipisicing elit. Error aliquam debitis dolor
+			ad ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus
+			eaque velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem
+			ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam debitis
+			dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing
+			elit. Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa
+			possimus quisquam facere voluptatibus eaque velit cumque repellendus
+			ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit, amet
+			consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam optio
+			sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit cumque
+			repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit,
+			amet consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam
+			optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit
+			cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor
+			sit, amet consectetur adipisicing elit. Error aliquam debitis dolor ad
+			ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque
+			velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum
+			dolor sit, amet consectetur adipisicing elit. Error aliquam debitis dolor
+			ad ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus
+			eaque velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem
+			ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam debitis
+			dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing
+			elit. Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa
+			possimus quisquam facere voluptatibus eaque velit cumque repellendus
+			ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit, amet
+			consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam optio
+			sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit cumque
+			repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor sit,
+			amet consectetur adipisicing elit. Error aliquam debitis dolor ad ipsam
+			optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque velit
+			cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum dolor
+			sit, amet consectetur adipisicing elit. Error aliquam debitis dolor ad
+			ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus eaque
+			velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem ipsum
+			dolor sit, amet consectetur adipisicing elit. Error aliquam debitis dolor
+			ad ipsam optio sit nesciunt ipsa possimus quisquam facere voluptatibus
+			eaque velit cumque repellendus ducimus, magni doloribus repudiandae.Lorem
+			ipsum dolor sit, amet consectetur adipisicing elit. Error aliquam debitis
+			dolor ad ipsam optio sit nesciunt ipsa possimus quisquam facere
+			voluptatibus eaque velit cumque repellendus ducimus, magni doloribus
+			repudiandae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+			Error aliquam debitis dolor ad ipsam optio sit nesciunt ipsa possimus
+			quisquam facere voluptatibus eaque velit cumque repellendus ducimus, magni
+			doloribus repudiandae.
+		</div>
+		<footer class="bg-primary_light text-primary py-6">
+			<div
+				class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4"
+			>
+				<!-- Logo & Name -->
+				<div class="flex items-center space-x-2">
+					<!-- SVG-Logo von ChatGPT generiert. Prompt: "svg which is displaying 3 T's", "please place 2 T's above the other one. also make a circle around them" (03.02.2025)  -->
+					<svg
+						class="w-8 h-8 fill-primary stroke-primary"
+						viewBox="0 0 100 100"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<!-- Circle Outline -->
+						<circle
+							cx="50"
+							cy="50"
+							r="45"
+							stroke="secondary"
+							stroke-width="6"
+							fill="none"
+						/>
+
+						<!-- Top-left T -->
+						<rect x="25" y="20" width="20" height="5" fill="primary" />
+						<rect x="32" y="25" width="5" height="20" fill="primary" />
+
+						<!-- Top-right T -->
+						<rect x="55" y="20" width="20" height="5" fill="primary" />
+						<rect x="62" y="25" width="5" height="20" fill="primary" />
+
+						<!-- Bottom T -->
+						<g class="fill-secondary stroke-secondary">
+							<rect x="40" y="50" width="20" height="5" fill="primary" />
+							<rect x="47" y="55" width="5" height="25" fill="primary" />
+						</g>
+					</svg>
+
+					<span class="text-xl font-bold"
+						>Thomas<span class="text-secondary">Trainings</span>Tool</span
+					>
+				</div>
+
+				<!-- Navigation Links -->
+				<ul
+					class="flex flex-wrap justify-center md:justify-end space-x-6 mt-4 md:mt-0"
+				>
+					<li>
+						<a href="#" class="hover:text-secondary transition duration-300"
+							>Home</a
+						>
+					</li>
+					<li>
+						<a href="#" class="hover:text-secondary transition duration-300"
+							>Trainingspläne</a
+						>
+					</li>
+					<li>
+						<a href="#" class="hover:text-secondary transition duration-300"
+							>Über uns</a
+						>
+					</li>
+					<li>
+						<a href="#" class="hover:text-secondary transition duration-300"
+							>Kontakt</a
+						>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Copyright -->
+			<div class="text-center text-secondary text-sm mt-6">
+				© 2025 ThomasTrainingTool. Alle Rechte vorbehalten.
+			</div>
+		</footer>
+
+		<!-- https://www.theodinproject.com/lessons/foundations-variables-and-operator -->
+		<script src="./script.js" defer></script>
+	</body>
 </html>
