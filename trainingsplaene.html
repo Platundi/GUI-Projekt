@@ -47,11 +47,12 @@
         </ul>
         <!-- Mobile Menu Button -->
         <button
-          class="md:hidden focus:outline-none p-1 rounded-md"
+          class="md:hidden focus:outline-none focus:ring-4 p-1 rounded-md"
           onclick="toggleMenu()"
         >
           <!-- SVG von ChatGPT generiert. Prompts: "kannst du mir bitte einen burger button svg generieren" (03.02.2025)  -->
           <svg
+            id="burger"
             class="w-8 h-8 text-primary fill-current hover:text-secondary transition duration-300"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -101,20 +102,23 @@
     <div
       class="container mx-auto flex flex-col items-center justify-between py-8 px-10 flex-1"
     >
-      <div class="w-full">
-        <p class="text-xl font-bold text-primary">
-          Was ist Thomas<span class="text-secondary">Trainings</span>Tool(T<span
-            class="text-secondary"
-            >T</span
-          >T)?
-        </p>
-        <p>
-          TTT ist eine schlichte Website, welche die Erstellung deines
-          individuellen Trainingsplans ermöglicht und dich nicht mit anderen
-          unnötigen Features belastet. Die Website bietet dir eine Übersicht
-          jeglicher Kraftsportübungen für jede Muskelgruppe, welche sich deinem
-          Trainingsplan zuordnen lassen.
-        </p>
+      <div
+        class="flex flex-col w-full h-full border-2 text-primary rounded-lg border-primary flex-1 p-4 space-y-2"
+      >
+        <div class="w-full pb-2 border-b-2 border-primary_light">
+          <h2 class="text-2xl font-bold">Push</h2>
+        </div>
+        <div class="w-full pb-2 flex">
+          <h2 class="text-l font-bold">Bankdrücken</h2>
+          <div
+            class="border-b-2 border-dashed border-primary my-auto mx-2 w-full flex-1"
+          ></div>
+          <div class="flex text-sm space-x-3">
+            <button type="button">-</button>
+            <div class="w-auto h-auto border-2 rounded-l p-0.5">12</div>
+            <button type="button">+</button>
+          </div>
+        </div>
       </div>
     </div>
     <footer class="bg-primary_light text-primary py-6">
