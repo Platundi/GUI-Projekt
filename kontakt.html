@@ -19,7 +19,11 @@
         <!-- Desktopnavigation -->
         <ul class="hidden md:flex flex-1 justify-end space-x-6 text-lg">
           <li>
-            <a href="./index.html" class="text-secondary">Home</a>
+            <a
+              href="./index.html"
+              class="hover:text-secondary transition duration-300"
+              >Home</a
+            >
           </li>
           <li>
             <a
@@ -36,16 +40,12 @@
             >
           </li>
           <li>
-            <a
-              href="./kontakt.html"
-              class="hover:text-secondary transition duration-300"
-              >Kontakt</a
-            >
+            <a href="./kontakt.html" class="text-secondary">Kontakt</a>
           </li>
         </ul>
         <!-- Mobile Menu Button -->
         <button
-          class="md:hidden focus:outline-none focus:ring-2 p-1 rounded-md"
+          class="md:hidden focus:outline-none p-1 rounded-md"
           onclick="toggleMenu()"
         >
           <!-- SVG von ChatGPT generiert. Prompts: "kannst du mir bitte einen burger button svg generieren" (03.02.2025)  -->
@@ -67,7 +67,11 @@
       >
         <ul class="text-center text-lg space-y-4 p-4">
           <li>
-            <a href="./index.html" class="block text-secondary">Home</a>
+            <a
+              href="./index.html"
+              class="block hover:text-secondary transition duration-300"
+              >Home</a
+            >
           </li>
           <li>
             <a
@@ -84,44 +88,72 @@
             >
           </li>
           <li>
-            <a
-              href="./kontakt.html"
-              class="block hover:text-secondary transition duration-300"
-              >Kontakt</a
-            >
+            <a href="./kontakt.html" class="block text-secondary">Kontakt</a>
           </li>
         </ul>
       </div>
     </nav>
-    <!-- Main -->
+    <!-- Main (Form) (Inspiration von https://flowbite.com/blocks/marketing/contact/ (05.02.2025)) -->
     <div
-      class="container mx-auto flex flex-col items-center justify-between py-4 px-10 flex-1"
+      class="container mx-auto flex flex-col items-center justify-start py-4 px-10 flex-1"
     >
-      <div class="w-full text-primary py-4">
-        <p class="text-xl font-bold">
-          Was ist Thomas<span class="text-secondary">Trainings</span>Tool(T<span
-            class="text-secondary"
-            >T</span
-          >T)?
-        </p>
-        <p>
-          TTT ist eine schlichte Website, welche die Erstellung deines
-          individuellen Trainingsplans ermöglicht und dich nicht mit anderen
-          unnötigen Features belastet. Die Website bietet dir eine Übersicht
-          jeglicher Kraftsportübungen für jede Muskelgruppe, welche sich deinem
-          Trainingsplan zuordnen lassen.
+      <div class="w-full text-primary py-4 text-center">
+        <h2 class="text-2xl font-bold">Kontaktiere mich!</h2>
+        <p class="text-xl">
+          Hast du eine Frage oder Verbesserungsvorschläge für die Seite?
+          Kontaktiere mich gerne und ich werde so schnell wie möglich für dich
+          da sein!
         </p>
       </div>
-      <div class="w-full text-primary py-4">
-        <p class="text-xl font-bold">Warum ein Trainingsplan?</p>
-        <p>
-          Ein Trainingsplan hilft dir, deine Kraft und Muskeln gezielt und
-          effizient aufzubauen, da du deine Belastung strukturiert steigerst.
-          Außerdem schützt er dich vor Übertraining und Verletzungen, indem er
-          Erholungsphasen sinnvoll einplant. Durch einen Plan kannst du deine
-          Fortschritte besser nachverfolgen und deine Übungen gezielt anpassen,
-          um das Beste aus deinem Training herauszuholen.
-        </p>
+      <div
+        class="w-full py-8 lg:py-16 px-4 mx-auto max-w-screen-md text-primary flex-1"
+      >
+        <form class="space-y-8" action="#">
+          <div>
+            <label for="email" class="block mb-2 text-sm font-medium"
+              >Deine E-Mail-Adresse</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="shadow-sm bg-white border border-primary p-2.5 text-gray-900 text-sm rounded-lg block w-full"
+              placeholder="maxmustermann@gmail.com"
+              required
+            />
+          </div>
+          <div>
+            <label for="thema" class="block mb-2 text-sm font-medium"
+              >Thema</label
+            >
+            <input
+              type="text"
+              id="thema"
+              class="shadow-sm bg-white border border-primary p-2.5 text-gray-900 text-sm rounded-lg block w-full"
+              placeholder="Worum geht es?"
+              required
+            />
+          </div>
+          <div>
+            <label for="kommentar" class="block mb-2 text-sm font-medium"
+              >Kommentar</label
+            >
+            <textarea
+              maxlength="1500"
+              type="text"
+              id="kommentar"
+              rows="6"
+              class="shadow-sm bg-white border border-primary p-2.5 text-gray-900 text-sm rounded-lg block w-full"
+              placeholder="Dein Anliegen..."
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="py-3 px-5 text-sm font-medium border-primary border-2 text-center text-primary rounded-lg bg-secondary sm:w-fit hover:bg-secondary_focus focus:ring-2 focus:outline-none focus:ring-primary outline-none"
+          >
+            Abschicken
+          </button>
+        </form>
       </div>
     </div>
     <footer class="bg-primary_light text-primary py-6">
@@ -171,7 +203,11 @@
           class="flex flex-1 flex-col md:flex-row items-center space-x-0 md:space-x-6 md:justify-end mt-4 md:mt-0"
         >
           <li>
-            <a href="./index.html" class="text-secondary">Home</a>
+            <a
+              href="./index.html"
+              class="hover:text-secondary transition duration-300"
+              >Home</a
+            >
           </li>
           <li>
             <a
@@ -188,11 +224,7 @@
             >
           </li>
           <li>
-            <a
-              href="./kontakt.html"
-              class="hover:text-secondary transition duration-300"
-              >Kontakt</a
-            >
+            <a href="./kontakt.html" class="text-secondary">Kontakt</a>
           </li>
         </ul>
       </div>
