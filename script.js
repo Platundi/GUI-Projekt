@@ -17,21 +17,22 @@ let i = 0;
 
 function updateMotivation() {
 	const element = document.getElementById("motivationalPhrases");
+	if (element != null) {
+		// Fade-out effect
+		element.classList.add("opacity-0");
 
-	// Fade-out effect
-	element.classList.add("opacity-0");
+		setTimeout(() => {
+			// Change the text after fade-out
+			element.innerText = motivationalPhrases[i];
 
-	setTimeout(() => {
-		// Change the text after fade-out
-		element.innerText = motivationalPhrases[i];
+			// Fade-in effect
+			element.classList.remove("opacity-0");
+			element.classList.add("opacity-100");
 
-		// Fade-in effect
-		element.classList.remove("opacity-0");
-		element.classList.add("opacity-100");
-
-		// Update the index for the next phrase
-		i = (i + 1) % motivationalPhrases.length;
-	}, 1000); // Wait for the fade-out duration (1s)
+			// Update the index for the next phrase
+			i = (i + 1) % motivationalPhrases.length;
+		}, 1000); // Wait for the fade-out duration (1s)
+	}
 }
 
 updateMotivation();
@@ -65,101 +66,112 @@ function repsLogic(button) {
 	}
 }
 
-// const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
-//           <h2 class="text-l font-bold">Bankdrücken</h2>
-//           <div
-//             class="border-b-2 border-dashed border-primary w-full flex-1"
-//           ></div>
-//           <!-- Desktop sets and reps -->
-//           <div class="hidden sm:flex text-sm font-bold space-x-2">
-//             <button
-//               class="max-w-6 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center"
-//               type="button"
-//             >
-//               -
-//             </button>
-//             <div class="relative">
-//               <label for="sets" class="absolute top-[-1.2rem] -left-[0.3rem]"
-//                 >Sätze</label
-//               >
-//               <div
-//                 class="w-auto h-auto border-2 border-primary p-0.5"
-//                 id="sets"
-//               >
-//                 12
-//               </div>
-//             </div>
-//             <button
-//               class="max-w-6 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center"
-//               type="button"
-//             >
-//               +
-//             </button>
-//           </div>
-//           <div class="hidden sm:flex text-sm font-bold space-x-2">
-//             <button
-//               class="max-w-6 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center"
-//               type="button"
-//             >
-//               -
-//             </button>
-//             <div class="relative">
-//               <label for="reps" class="absolute top-[-1.2rem] -left-[0.3rem]"
-//                 >Wied.</label
-//               >
-//               <div
-//                 class="w-auto h-auto border-2 border-primary p-0.5"
-//                 id="reps"
-//               >
-//                 12
-//               </div>
-//             </div>
-//             <button
-//               class="max-w-6 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center"
-//               type="button"
-//             >
-//               +
-//             </button>
-//           </div>
-//           <!-- Mobile sets and reps -->
-//           <div class="flex space-x-2 sm:hidden">
-//             <div class="relative">
-//               <label
-//                 for="sets"
-//                 class="text-xs block absolute top-[-1rem] left-[0.30rem]"
-//                 >Sätze</label
-//               >
-//               <input
-//                 type="tel"
-//                 id="sets"
-//                 class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border flex items-center justify-center"
-//                 value="0"
-//                 min="0"
-//                 max="99"
-//                 pattern="[0-9]*"
-//                 inputmode="numeric"
-//               />
-//             </div>
-//             <div class="relative">
-//               <label
-//                 for="reps"
-//                 class="text-xs block absolute top-[-1rem] left-[0.30rem]"
-//                 >Wied.</label
-//               >
-//               <input
-//                 type="tel"
-//                 id="reps"
-//                 class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border flex items-center justify-center"
-//                 value="0"
-//                 min="0"
-//                 max="99"
-//                 pattern="[0-9]*"
-//                 inputmode="numeric"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//         `;
-// document
-//   .getElementById("workoutPlan")
-//   .insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15));
+const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
+					<h2 class="text-xl sm:text-2xl font-bold">Bankdrücken</h2>
+					<div
+						class="border-b-2 border-dashed border-primary w-full flex-1"
+					></div>
+					<!-- -- Desktop sets and reps -- -->
+					<div class="hidden sm:flex text-base font-bold space-x-1">
+						<button
+							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus transition"
+							type="button"
+							id="setsDecrease"
+							onclick="setsLogic(this)"
+						>
+							-
+						</button>
+						<div class="relative">
+							<label for="sets" class="absolute top-[-1.3rem] -left-[0.2rem]"
+								>Sätze</label
+							>
+							<input
+								type="text"
+								class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
+								id="sets"
+								value="0"
+								min="0"
+								max="99"
+							/>
+						</div>
+						<button
+							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+							type="button"
+							id="setsIncrease"
+							onclick="setsLogic(this)"
+						>
+							+
+						</button>
+					</div>
+					<div class="hidden sm:flex text-base font-bold space-x-1">
+						<button
+							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+							type="button"
+							id="repsDecrease"
+							onclick="repsLogic(this)"
+						>
+							-
+						</button>
+						<div class="relative">
+							<label for="reps" class="absolute top-[-1.3rem] -left-[0.3rem]"
+								>Wied.</label
+							>
+							<input
+								type="text"
+								class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
+								id="reps"
+								value="0"
+								min="0"
+								max="99"
+							/>
+						</div>
+						<button
+							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+							type="button"
+							id="repsIncrease"
+							onclick="repsLogic(this)"
+						>
+							+
+						</button>
+					</div>
+					<!-- -- Mobile sets and reps -- -->
+					<div class="flex space-x-2 font-bold sm:hidden">
+						<div class="relative">
+							<label
+								for="mobileSets"
+								class="text-xs block absolute top-[-1rem] left-[0.30rem]"
+								>Sätze</label
+							>
+							<input
+								type="tel"
+								id="mobileSets"
+								class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
+								value="0"
+								min="0"
+								max="99"
+								pattern="[0-9]*"
+								inputmode="numeric"
+							/>
+						</div>
+						<div class="relative">
+							<label
+								for="mobileReps"
+								class="text-xs block absolute top-[-1rem] left-[0.30rem]"
+								>Wied.</label
+							>
+							<input
+								type="tel"
+								id="mobileReps"
+								class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
+								value="0"
+								min="0"
+								max="99"
+								pattern="[0-9]*"
+								inputmode="numeric"
+							/>
+						</div>
+					</div>
+				</div>`;
+document
+	.getElementById("workoutPlan")
+	.insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15));
