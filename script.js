@@ -172,6 +172,8 @@ const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
 						</div>
 					</div>
 				</div>`;
-document
-	.getElementById("workoutPlan")
-	.insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15));
+document.getElementById("workoutPlan") != null
+	? document
+			.getElementById("workoutPlan")
+			.insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15))
+	: null;
