@@ -12,7 +12,34 @@ const motivationalPhrases = [
 	"Schweiß ist nur das, was die Muskeln stärker macht.",
 ];
 
-// Von chatGPT generitert (Prompts: insert first motivational phrase into html element and replace that with the next one after 15 seconds. i want a transition for the replacement of text) (07.02.2025)
+const trainingsplaene = [];
+const cart = [];
+
+function addtoCart(uebung) {
+	let uebungsname = uebung.parentNode;
+	cart.push(uebungsname.querySelector("h5").innerText);
+	console.table(cart);
+}
+
+function toggleCart() {
+	const div = document.getElementById("cart");
+	div.classList.toggle("hidden");
+	setTimeout(() => {
+		div.classList.toggle("-right-1/3"); // Offscreen to right
+		div.classList.toggle("right-0");
+	}, 1);
+	let cartItems = document.getElementById("cartItems");
+	cartItems.innerHTML = "";
+	let cartItemsHTML = "";
+	if (cart.length != 0) {
+		cart.forEach((e) => {
+			cartItemsHTML += `<p>${e}<p/>`;
+		});
+		cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
+	}
+}
+
+// Von chatGPT generiert (Prompts: insert first motivational phrase into html element and replace that with the next one after 15 seconds. i want a transition for the replacement of text) (07.02.2025)
 let i = 0;
 
 function updateMotivation() {
