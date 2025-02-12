@@ -1,3 +1,10 @@
+class Trainingsplan {
+  constructor(name, uebungen = []) {
+    this.name = name;
+    this.uebungen = uebungen;
+  }
+}
+
 // Von chatGPT generiert (Prompt: generate motivational phrases for bodybuilding in js array) (07.02.2025)
 const motivationalPhrases = [
   "Stärke wächst nicht aus körperlicher Kraft – vielmehr aus unbeugsamen Willen.",
@@ -12,21 +19,27 @@ const motivationalPhrases = [
   "Schweiß ist nur das, was die Muskeln stärker macht.",
 ];
 
-const trainingsplaene = [];
-const cart = [];
+let trainingsplaene = [];
+let cart = [];
 
+// Übung dem Warenkorb hinzufügen
 function addtoCart(uebung) {
   let uebungsname = uebung.parentNode;
   cart.push(uebungsname.querySelector("h5").innerText);
   console.table(cart);
+  addCartItems();
 }
 
+// Warenkorb zur Anzeige bringen
 function toggleCart() {
   const div = document.getElementById("cart");
-  //   div.classList.toggle("hidden");
   div.classList.toggle("flex");
   div.classList.toggle("-right-full"); // Offscreen to right
   div.classList.toggle("-right-0"); // Move to screen
+}
+
+// Warenkorbitems zur Anzeige bringen
+function addCartItems() {
   let cartItems = document.getElementById("cartItems");
   cartItems.innerHTML = "";
   let cartItemsHTML = "";
@@ -38,9 +51,23 @@ function toggleCart() {
   }
 }
 
+// Trainingsplannamen vergeben und Warenkorb danach ausblenden
+function createPlan() {
+  let trainingplanName = "";
+  trainingplanName = prompt("Geben Sie den Namen für den Trainingsplan ein:");
+  trainingsplaene.push(new Trainingsplan(trainingplanName, cart));
+  toggleCart();
+}
+
+// Trainingspläne Tabubergreifend verfügbar machen
+function saveTrainingsplaene() {
+  sessionStorage.setItem("trainingsplaene", JSON.stringify(trainingsplaene));
+}
+
 // Von chatGPT generiert (Prompts: insert first motivational phrase into html element and replace that with the next one after 15 seconds. i want a transition for the replacement of text) (07.02.2025)
 let i = 0;
 
+// Motivationssprüche
 function updateMotivation() {
   const element = document.getElementById("motivationalPhrases");
   if (element != null) {
@@ -64,9 +91,11 @@ function updateMotivation() {
 updateMotivation();
 setInterval(updateMotivation, 15000); // Updates every 15 seconds
 
+// Mobiles Menü zur Anzeige bringen
 function toggleMenu() {
   document.getElementById("mobile-menu").classList.toggle("hidden");
   let burger = document.getElementById("burger");
+  // Burger-Button secondary lassen, wenn er geklickt wurde
   if (burger.classList.contains("text-primary")) {
     burger.classList.replace("text-primary", "text-secondary");
   } else if (burger.classList.contains("text-secondary")) {
@@ -74,8 +103,9 @@ function toggleMenu() {
   }
 }
 
-function setsLogic(button) {
-  let sets = document.getElementById("sets");
+// Sätze hoch- bzw. runterzählen
+function setsLogic(button, i) {
+  let sets = document.getElementById("sets" + i);
   if (button.id == "setsIncrease") {
     sets.value = parseInt(sets.value) + 1;
   } else if (button.id == "setsDecrease") {
@@ -83,8 +113,9 @@ function setsLogic(button) {
   }
 }
 
-function repsLogic(button) {
-  let reps = document.getElementById("reps");
+// Wiederholungen hoch- bzw. runterzählen
+function repsLogic(button, i) {
+  let reps = document.getElementById("reps" + i);
   if (button.id == "repsIncrease") {
     reps.value = parseInt(reps.value) + 1;
   } else if (button.id == "repsDecrease") {
@@ -92,114 +123,142 @@ function repsLogic(button) {
   }
 }
 
-const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
-					<h2 class="text-xl sm:text-2xl font-bold">Bankdrücken</h2>
-					<div
-						class="border-b-2 border-dashed border-primary w-full flex-1"
-					></div>
-					<!-- -- Desktop sets and reps -- -->
-					<div class="hidden sm:flex text-base font-bold space-x-1">
-						<button
-							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus transition"
-							type="button"
-							id="setsDecrease"
-							onclick="setsLogic(this)"
-						>
-							-
-						</button>
-						<div class="relative">
-							<label for="sets" class="absolute top-[-1.3rem] -left-[0.2rem]"
-								>Sätze</label
+// Seite trainingsplaene.html dynamisch generieren
+let workoutPlanHTML;
+
+if (document.getElementById("workoutPlan") != null) {
+  // Gespeicherte Trainingsplaene holen
+  trainingsplaene = JSON.parse(sessionStorage.getItem("trainingsplaene"));
+  workoutPlanHTML = sessionStorage.getItem("workoutPlanHTML");
+  if (trainingsplaene.length != 0) {
+    for (let i = 0; i < trainingsplaene.length; i++) {
+      const e = trainingsplaene[i];
+      // Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
+      if (workoutPlanHTML == undefined) {
+        workoutPlanHTML = `<div class="w-full pb-2 border-b-4 border-primary_light">
+			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
+	  </div>`;
+      } else {
+        workoutPlanHTML += `<div class="w-full pb-2 border-b-4 border-primary_light">
+			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
+	  </div>`;
+      }
+      for (let j = 0; j < e.uebungen.length; j++) {
+        const uebung = e.uebungen[j];
+        workoutPlanHTML += `<div class="w-full flex items-center space-x-2">
+							<h2 class="text-xl sm:text-2xl font-bold">${uebung}</h2>
+						<div
+							class="border-b-2 border-dashed border-primary w-full flex-1"
+						></div>
+						<!-- -- Desktop sets and reps -- -->
+						<div class="hidden sm:flex text-base font-bold space-x-1">
+							<button
+								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus transition"
+								type="button"
+								id="setsDecrease"
+								onclick="setsLogic(this,${j})"
 							>
-							<input
-								type="text"
-								class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
-								id="sets"
-								value="0"
-								min="0"
-								max="99"
-							/>
-						</div>
-						<button
-							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
-							type="button"
-							id="setsIncrease"
-							onclick="setsLogic(this)"
-						>
-							+
-						</button>
-					</div>
-					<div class="hidden sm:flex text-base font-bold space-x-1">
-						<button
-							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
-							type="button"
-							id="repsDecrease"
-							onclick="repsLogic(this)"
-						>
-							-
-						</button>
-						<div class="relative">
-							<label for="reps" class="absolute top-[-1.3rem] -left-[0.3rem]"
-								>Wied.</label
+								-
+							</button>
+							<div class="relative">
+								<label for="sets${j}" class="absolute top-[-1.3rem] -left-[0.2rem]"
+									>Sätze</label
+								>
+								<input
+									type="text"
+									class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
+									id="sets${j}"
+									value="0"
+									min="0"
+									max="99"
+								/>
+							</div>
+							<button
+								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+								type="button"
+								id="setsIncrease"
+								onclick="setsLogic(this,${j})"
 							>
-							<input
-								type="text"
-								class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
-								id="reps"
-								value="0"
-								min="0"
-								max="99"
-							/>
+								+
+							</button>
 						</div>
-						<button
-							class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
-							type="button"
-							id="repsIncrease"
-							onclick="repsLogic(this)"
-						>
-							+
-						</button>
-					</div>
-					<!-- -- Mobile sets and reps -- -->
-					<div class="flex space-x-2 font-bold sm:hidden">
-						<div class="relative">
-							<label
-								for="mobileSets"
-								class="text-xs block absolute top-[-1rem] left-[0.30rem]"
-								>Sätze</label
+						<div class="hidden sm:flex text-base font-bold space-x-1">
+							<button
+								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+								type="button"
+								id="repsDecrease"
+								onclick="repsLogic(this,${j})"
 							>
-							<input
-								type="tel"
-								id="mobileSets"
-								class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
-								value="0"
-								min="0"
-								max="99"
-								pattern="[0-9]*"
-								inputmode="numeric"
-							/>
-						</div>
-						<div class="relative">
-							<label
-								for="mobileReps"
-								class="text-xs block absolute top-[-1rem] left-[0.30rem]"
-								>Wied.</label
+								-
+							</button>
+							<div class="relative">
+								<label for="reps${j}" class="absolute top-[-1.3rem] -left-[0.3rem]"
+									>Wied.</label
+								>
+								<input
+									type="text"
+									class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
+									id="reps${j}"
+									value="0"
+									min="0"
+									max="99"
+								/>
+							</div>
+							<button
+								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
+								type="button"
+								id="repsIncrease"
+								onclick="repsLogic(this,${j})"
 							>
-							<input
-								type="tel"
-								id="mobileReps"
-								class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
-								value="0"
-								min="0"
-								max="99"
-								pattern="[0-9]*"
-								inputmode="numeric"
-							/>
+								+
+							</button>
 						</div>
-					</div>
-				</div>`;
-document.getElementById("workoutPlan") != null
-  ? document
+						<!-- -- Mobile sets and reps -- -->
+						<div class="flex space-x-2 font-bold sm:hidden">
+							<div class="relative">
+								<label
+									for="mobileSets"
+									class="text-xs block absolute top-[-1rem] left-[0.30rem]"
+									>Sätze</label
+								>
+								<input
+									type="tel"
+									id="mobileSets"
+									class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
+									value="0"
+									min="0"
+									max="99"
+									pattern="[0-9]*"
+									inputmode="numeric"
+								/>
+							</div>
+							<div class="relative">
+								<label
+									for="mobileReps"
+									class="text-xs block absolute top-[-1rem] left-[0.30rem]"
+									>Wied.</label
+								>
+								<input
+									type="tel"
+									id="mobileReps"
+									class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
+									value="0"
+									min="0"
+									max="99"
+									pattern="[0-9]*"
+									inputmode="numeric"
+								/>
+							</div>
+						</div>
+					</div>`;
+      }
+    }
+    document
       .getElementById("workoutPlan")
-      .insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15))
-  : null;
+      .insertAdjacentHTML("beforeend", workoutPlanHTML);
+    sessionStorage.setItem(
+      "workoutPlanHTML",
+      document.getElementById("workoutPlan").innerHTML
+    );
+  }
+}

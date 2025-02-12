@@ -33,6 +33,7 @@
             <a
               href="./trainingsplaene.html"
               class="hover:text-secondary transition duration-300"
+              onclick="saveTrainingsplaene()"
               >Trainingspläne</a
             >
           </li>
@@ -108,6 +109,7 @@
             <a
               href="./trainingsplaene.html"
               class="block hover:text-secondary transition duration-300"
+              onclick="saveTrainingsplaene()"
               >Trainingspläne</a
             >
           </li>
@@ -158,7 +160,9 @@
           class="min-h-80vh overflow-y-auto flex-grow-0 space-y-2 flex flex-col text-xl text-primary font-bold"
         ></div>
         <button
-          type="submit"
+          id="createPlan"
+          onclick="createPlan()"
+          type="button"
           class="overflow-hidden py-3 px-5 text-sm font-medium border-primary border-2 text-center text-primary rounded-lg bg-secondary sm:w-fit hover:bg-secondary_focus focus:ring-2 focus:outline-none focus:ring-primary outline-none"
         >
           Zum Trainingsplan <br />
@@ -167,7 +171,7 @@
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg shadow-sm"
+        class="max-w-sm bg-primary_light border border-primary rounded-lg flex flex-col"
       >
         <a href="#">
           <img
@@ -176,7 +180,7 @@
             alt=""
           />
         </a>
-        <div class="p-5">
+        <div class="p-5 flex-1">
           <a href="#">
             <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
           </a>
@@ -194,21 +198,22 @@
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg shadow-sm"
+        class="max-w-sm bg-primary_light border border-primary rounded-lg flex flex-col"
       >
-        <a href="#">
+        <a href="#" class="flex-shrink">
           <img
             class="rounded-t-lg"
-            src="./src/img/bankdruecken-langhantel.png"
+            src="./src/img/How_To_Do_a_Trap_Bar_Deadlift_Step-by-Step.webp"
             alt=""
           />
         </a>
-        <div class="p-5">
+        <div class="p-5 flex-1">
           <a href="#">
-            <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
+            <h5 class="mb-2 text-2xl font-bold text-primary">Kreuzheben</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
-            Eine bilaterale Grundübung für die Brust.
+            Eine Grundübung für den Rücken, wobei der gesamte Körper beansprucht
+            wird.
           </p>
           <a
             href="#"
@@ -226,16 +231,16 @@
         <a href="#">
           <img
             class="rounded-t-lg"
-            src="./src/img/bankdruecken-langhantel.png"
+            src="./src/img/barbell-squat-resized-FIXED-2.webp"
             alt=""
           />
         </a>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
+            <h5 class="mb-2 text-2xl font-bold text-primary">Squads</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
-            Eine bilaterale Grundübung für die Brust.
+            Eine Grundübung für die Beine.
           </p>
           <a
             href="#"
@@ -253,16 +258,16 @@
         <a href="#">
           <img
             class="rounded-t-lg"
-            src="./src/img/bankdruecken-langhantel.png"
+            src="./src/img/Triceps_Dips_Muscles_Worked_1024x1024.webp"
             alt=""
           />
         </a>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
+            <h5 class="mb-2 text-2xl font-bold text-primary">Dips</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
-            Eine bilaterale Grundübung für die Brust.
+            Eine Grundübung für die Brust und Trizeps.
           </p>
           <a
             href="#"
@@ -280,16 +285,16 @@
         <a href="#">
           <img
             class="rounded-t-lg"
-            src="./src/img/bankdruecken-langhantel.png"
+            src="./src/img/close-grip-chin-up.webp"
             alt=""
           />
         </a>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
+            <h5 class="mb-2 text-2xl font-bold text-primary">Chin-Up</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
-            Eine bilaterale Grundübung für die Brust.
+            Eine Grundübung für den Biceps.
           </p>
           <a
             href="#"
@@ -361,6 +366,7 @@
             <a
               href="./trainingsplaene.html"
               class="hover:text-secondary transition duration-300"
+              onclick="saveTrainingsplaene()"
               >Trainingspläne</a
             >
           </li>
