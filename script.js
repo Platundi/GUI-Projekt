@@ -26,7 +26,7 @@ function toggleCart() {
 	div.classList.toggle("hidden");
 	setTimeout(() => {
 		div.classList.toggle("-right-1/3"); // Offscreen to right
-		div.classList.toggle("right-0");
+		div.classList.toggle("left-0");
 	}, 1);
 	let cartItems = document.getElementById("cartItems");
 	cartItems.innerHTML = "";
