@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-header {
-	background-color: blue;
-}
-/*# sourceMappingURL=input.css.map */
+.min-h-80vh {
+  min-height: 80vh;
+} /*# sourceMappingURL=input.css.map */

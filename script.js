@@ -1,96 +1,95 @@
 // Von chatGPT generiert (Prompt: generate motivational phrases for bodybuilding in js array) (07.02.2025)
 const motivationalPhrases = [
-	"Stärke wächst nicht aus körperlicher Kraft – vielmehr aus unbeugsamen Willen.",
-	"Deine einzige Grenze ist die, die du dir selbst setzt.",
-	"Erfolg ist das Ergebnis von harter Arbeit, Disziplin und Ausdauer.",
-	"Gib niemals auf, der Schmerz ist nur vorübergehend, der Stolz bleibt.",
-	"Du wirst nicht stärker, wenn du immer dasselbe tust.",
-	"Jeder Tag ist eine neue Chance, stärker zu werden.",
-	"Es gibt keine Abkürzungen zu einem Körper, auf den du stolz sein kannst.",
-	"Ziele sind das, was dich antreibt, der Wille ist der Weg.",
-	"Glaube an dich selbst, und der Rest wird folgen.",
-	"Schweiß ist nur das, was die Muskeln stärker macht.",
+  "Stärke wächst nicht aus körperlicher Kraft – vielmehr aus unbeugsamen Willen.",
+  "Deine einzige Grenze ist die, die du dir selbst setzt.",
+  "Erfolg ist das Ergebnis von harter Arbeit, Disziplin und Ausdauer.",
+  "Gib niemals auf, der Schmerz ist nur vorübergehend, der Stolz bleibt.",
+  "Du wirst nicht stärker, wenn du immer dasselbe tust.",
+  "Jeder Tag ist eine neue Chance, stärker zu werden.",
+  "Es gibt keine Abkürzungen zu einem Körper, auf den du stolz sein kannst.",
+  "Ziele sind das, was dich antreibt, der Wille ist der Weg.",
+  "Glaube an dich selbst, und der Rest wird folgen.",
+  "Schweiß ist nur das, was die Muskeln stärker macht.",
 ];
 
 const trainingsplaene = [];
 const cart = [];
 
 function addtoCart(uebung) {
-	let uebungsname = uebung.parentNode;
-	cart.push(uebungsname.querySelector("h5").innerText);
-	console.table(cart);
+  let uebungsname = uebung.parentNode;
+  cart.push(uebungsname.querySelector("h5").innerText);
+  console.table(cart);
 }
 
 function toggleCart() {
-	const div = document.getElementById("cart");
-	div.classList.toggle("hidden");
-	setTimeout(() => {
-		div.classList.toggle("-right-1/3"); // Offscreen to right
-		div.classList.toggle("left-0");
-	}, 1);
-	let cartItems = document.getElementById("cartItems");
-	cartItems.innerHTML = "";
-	let cartItemsHTML = "";
-	if (cart.length != 0) {
-		cart.forEach((e) => {
-			cartItemsHTML += `<p>${e}<p/>`;
-		});
-		cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
-	}
+  const div = document.getElementById("cart");
+  //   div.classList.toggle("hidden");
+  div.classList.toggle("flex");
+  div.classList.toggle("-right-full"); // Offscreen to right
+  div.classList.toggle("-right-0"); // Move to screen
+  let cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+  let cartItemsHTML = "";
+  if (cart.length != 0) {
+    cart.forEach((e) => {
+      cartItemsHTML += `<p>${e}<p/>`;
+    });
+    cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
+  }
 }
 
 // Von chatGPT generiert (Prompts: insert first motivational phrase into html element and replace that with the next one after 15 seconds. i want a transition for the replacement of text) (07.02.2025)
 let i = 0;
 
 function updateMotivation() {
-	const element = document.getElementById("motivationalPhrases");
-	if (element != null) {
-		// Fade-out effect
-		element.classList.add("opacity-0");
+  const element = document.getElementById("motivationalPhrases");
+  if (element != null) {
+    // Fade-out effect
+    element.classList.add("opacity-0");
 
-		setTimeout(() => {
-			// Change the text after fade-out
-			element.innerText = motivationalPhrases[i];
+    setTimeout(() => {
+      // Change the text after fade-out
+      element.innerText = motivationalPhrases[i];
 
-			// Fade-in effect
-			element.classList.remove("opacity-0");
-			element.classList.add("opacity-100");
+      // Fade-in effect
+      element.classList.remove("opacity-0");
+      element.classList.add("opacity-100");
 
-			// Update the index for the next phrase
-			i = (i + 1) % motivationalPhrases.length;
-		}, 1000); // Wait for the fade-out duration (1s)
-	}
+      // Update the index for the next phrase
+      i = (i + 1) % motivationalPhrases.length;
+    }, 1000); // Wait for the fade-out duration (1s)
+  }
 }
 
 updateMotivation();
 setInterval(updateMotivation, 15000); // Updates every 15 seconds
 
 function toggleMenu() {
-	document.getElementById("mobile-menu").classList.toggle("hidden");
-	let burger = document.getElementById("burger");
-	if (burger.classList.contains("text-primary")) {
-		burger.classList.replace("text-primary", "text-secondary");
-	} else if (burger.classList.contains("text-secondary")) {
-		burger.classList.replace("text-secondary", "text-primary");
-	}
+  document.getElementById("mobile-menu").classList.toggle("hidden");
+  let burger = document.getElementById("burger");
+  if (burger.classList.contains("text-primary")) {
+    burger.classList.replace("text-primary", "text-secondary");
+  } else if (burger.classList.contains("text-secondary")) {
+    burger.classList.replace("text-secondary", "text-primary");
+  }
 }
 
 function setsLogic(button) {
-	let sets = document.getElementById("sets");
-	if (button.id == "setsIncrease") {
-		sets.value = parseInt(sets.value) + 1;
-	} else if (button.id == "setsDecrease") {
-		sets.value = parseInt(sets.value) - 1;
-	}
+  let sets = document.getElementById("sets");
+  if (button.id == "setsIncrease") {
+    sets.value = parseInt(sets.value) + 1;
+  } else if (button.id == "setsDecrease") {
+    sets.value = parseInt(sets.value) - 1;
+  }
 }
 
 function repsLogic(button) {
-	let reps = document.getElementById("reps");
-	if (button.id == "repsIncrease") {
-		reps.value = parseInt(reps.value) + 1;
-	} else if (button.id == "repsDecrease") {
-		reps.value = parseInt(reps.value) - 1;
-	}
+  let reps = document.getElementById("reps");
+  if (button.id == "repsIncrease") {
+    reps.value = parseInt(reps.value) + 1;
+  } else if (button.id == "repsDecrease") {
+    reps.value = parseInt(reps.value) - 1;
+  }
 }
 
 const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
@@ -200,7 +199,7 @@ const workoutPlanHTML = `<div class="w-full flex items-center space-x-2">
 					</div>
 				</div>`;
 document.getElementById("workoutPlan") != null
-	? document
-			.getElementById("workoutPlan")
-			.insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15))
-	: null;
+  ? document
+      .getElementById("workoutPlan")
+      .insertAdjacentHTML("beforeend", workoutPlanHTML.repeat(15))
+  : null;
