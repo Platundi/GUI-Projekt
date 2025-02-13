@@ -28,6 +28,20 @@ function addtoCart(uebung) {
   cart.push(uebungsname.querySelector("h5").innerText);
   console.table(cart);
   addCartItems();
+  toggleNoti();
+}
+
+function toggleNoti() {
+  if (cart.length != 0) {
+    let noti = document.getElementById("noti");
+    noti.innerText = cart.length;
+    noti.classList.add("flex");
+    noti.classList.remove("hidden");
+    let mobileNoti = document.getElementById("mobileNoti");
+    mobileNoti.innerText = cart.length;
+    mobileNoti.classList.add("flex");
+    mobileNoti.classList.remove("hidden");
+  }
 }
 
 // Warenkorb zur Anzeige bringen
@@ -104,8 +118,8 @@ function toggleMenu() {
 }
 
 // Sätze hoch- bzw. runterzählen
-function setsLogic(button, i) {
-  let sets = document.getElementById("sets" + i);
+function setsLogic(button, i, plan) {
+  let sets = document.getElementById("sets" + i + plan);
   if (button.id == "setsIncrease") {
     sets.value = parseInt(sets.value) + 1;
   } else if (button.id == "setsDecrease") {
@@ -114,8 +128,8 @@ function setsLogic(button, i) {
 }
 
 // Wiederholungen hoch- bzw. runterzählen
-function repsLogic(button, i) {
-  let reps = document.getElementById("reps" + i);
+function repsLogic(button, i, plan) {
+  let reps = document.getElementById("reps" + i + plan);
   if (button.id == "repsIncrease") {
     reps.value = parseInt(reps.value) + 1;
   } else if (button.id == "repsDecrease") {
@@ -156,7 +170,7 @@ if (document.getElementById("workoutPlan") != null) {
 								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus transition"
 								type="button"
 								id="setsDecrease"
-								onclick="setsLogic(this,${j})"
+								onclick="setsLogic(this,${j},'${e.name}')"
 							>
 								-
 							</button>
@@ -167,7 +181,7 @@ if (document.getElementById("workoutPlan") != null) {
 								<input
 									type="text"
 									class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
-									id="sets${j}"
+									id="sets${j}${e.name}"
 									value="0"
 									min="0"
 									max="99"
@@ -177,7 +191,7 @@ if (document.getElementById("workoutPlan") != null) {
 								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
 								type="button"
 								id="setsIncrease"
-								onclick="setsLogic(this,${j})"
+								onclick="setsLogic(this,${j},'${e.name}')"
 							>
 								+
 							</button>
@@ -187,7 +201,7 @@ if (document.getElementById("workoutPlan") != null) {
 								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
 								type="button"
 								id="repsDecrease"
-								onclick="repsLogic(this,${j})"
+								onclick="repsLogic(this,${j},'${e.name}')"
 							>
 								-
 							</button>
@@ -198,7 +212,7 @@ if (document.getElementById("workoutPlan") != null) {
 								<input
 									type="text"
 									class="text-center w-auto h-auto border-2 max-w-8 border-primary p-0.5 rounded-md outline-secondary"
-									id="reps${j}"
+									id="reps${j}${e.name}"
 									value="0"
 									min="0"
 									max="99"
@@ -208,7 +222,7 @@ if (document.getElementById("workoutPlan") != null) {
 								class="min-w-8 border-2 border-primary bg-secondary rounded-md py-0.5 px-2 box-border flex items-center justify-center active:scale-95 active:bg-secondary_focus"
 								type="button"
 								id="repsIncrease"
-								onclick="repsLogic(this,${j})"
+								onclick="repsLogic(this,${j},'${e.name}')"
 							>
 								+
 							</button>

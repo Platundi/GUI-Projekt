@@ -44,7 +44,7 @@
               >Kontakt</a
             >
           </li>
-          <li>
+          <li class="relative">
             <!-- Warenkorb -->
             <button onclick="toggleCart()">
               <!-- SVG von ChatGPT generiert. Prompts: "warenkorb svg wenig details" (07.02.2025) -->
@@ -69,6 +69,12 @@
                 <circle cx="17" cy="20" r="2" />
               </svg>
             </button>
+            <!-- Notification -->
+            <span
+              class="hidden absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3 bg-secondary text-white text-xs font-bold rounded-full w-5 h-5 items-center justify-center"
+              id="noti"
+            >
+            </span>
           </li>
         </ul>
         <!-- Mobile Menu Button -->
@@ -127,9 +133,45 @@
     <div
       class="container mx-auto flex flex-col flex-wrap gap-6 md:flex-row items-center justify-center py-8 px-10 flex-auto"
     >
+      <!-- Mobile-Warenkorb-Button -->
+      <div class="z-20 md:hidden block fixed bottom-10 right-10">
+        <button
+          onclick="toggleCart()"
+          class="bg-primary rounded-xl shadow-md drop-shadow-lg shadow-slate-700 py-3 px-4"
+        >
+          <!-- SVG von ChatGPT generiert. Prompts: "warenkorb svg wenig details" (07.02.2025) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-8 h-8 text-white fill-current transition duration-300"
+          >
+            <!-- Warenkorb -->
+            <path
+              d="M3 4h2l2 10h12l2-6H7"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <!-- Räder -->
+            <circle cx="9" cy="20" r="2" />
+            <circle cx="17" cy="20" r="2" />
+            s
+          </svg>
+        </button>
+        <!-- Notification -->
+        <span
+          class="hidden absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3 bg-secondary text-white text-xs font-bold rounded-full w-5 h-5 items-center justify-center"
+          id="mobileNoti"
+        >
+        </span>
+      </div>
       <div
         id="cart"
-        class="fixed flex-col z-20 p-4 top-0 -right-full space-y-4 transform transition-all duration-500 ease-in-out border-l-2 border-l-primary h-screen overflow-visible bg-primary_light w-4/12"
+        class="fixed flex-col z-20 p-4 top-0 -right-full space-y-4 transform transition-all duration-500 ease-in-out border-l-2 border-l-primary h-screen overflow-visible bg-primary_light w-2/3 md:w-4/12"
       >
         <!-- Warenkorb -->
         <button onclick="toggleCart()">
@@ -171,137 +213,151 @@
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg flex flex-col"
+        class="max-w-[382px] max-h-[369px] bg-primary_light border border-primary rounded-lg flex flex-col"
       >
-        <a href="#">
+        <a
+          href="javascript:void(0);"
+          class="relative h-[215px] w-[380px] block overflow-hidden"
+        >
           <img
-            class="rounded-t-lg"
+            class="rounded-t-lg absolute inset-0 w-full h-full object-cover"
             src="./src/img/bankdruecken-langhantel.png"
             alt=""
           />
         </a>
         <div class="p-5 flex-1">
-          <a href="#">
+          <a href="javascript:void(0);">
             <h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
             Eine bilaterale Grundübung für die Brust.
           </p>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
             onclick="addtoCart(this)"
           >
-            Hinzufügen
+            Zum Warenkorb hinzufügen
           </a>
         </div>
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg flex flex-col"
+        class="max-w-[382px] max-h-[369px] bg-primary_light border border-primary rounded-lg"
       >
-        <a href="#" class="flex-shrink">
+        <a
+          href="javascript:void(0);"
+          class="relative h-[215px] w-[380px] block overflow-hidden"
+        >
           <img
-            class="rounded-t-lg"
+            class="rounded-t-lg absolute inset-0 w-full h-full object-cover"
             src="./src/img/How_To_Do_a_Trap_Bar_Deadlift_Step-by-Step.webp"
             alt=""
           />
         </a>
         <div class="p-5 flex-1">
-          <a href="#">
+          <a href="javascript:void(0);">
             <h5 class="mb-2 text-2xl font-bold text-primary">Kreuzheben</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
-            Eine Grundübung für den Rücken, wobei der gesamte Körper beansprucht
-            wird.
+            Eine Grundübung für den Rücken.
           </p>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
             onclick="addtoCart(this)"
           >
-            Hinzufügen
+            Zum Warenkorb hinzufügen
           </a>
         </div>
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg shadow-sm"
+        class="max-w-[382px] max-h-[369px] bg-primary_light border border-primary rounded-lg"
       >
-        <a href="#">
+        <a
+          href="javascript:void(0);"
+          class="relative h-[215px] w-[380px] block overflow-hidden"
+        >
           <img
-            class="rounded-t-lg"
+            class="rounded-t-lg absolute inset-0 w-full h-full object-cover"
             src="./src/img/barbell-squat-resized-FIXED-2.webp"
             alt=""
           />
         </a>
         <div class="p-5">
-          <a href="#">
+          <a href="javascript:void(0);">
             <h5 class="mb-2 text-2xl font-bold text-primary">Squads</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
             Eine Grundübung für die Beine.
           </p>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
             onclick="addtoCart(this)"
           >
-            Hinzufügen
+            Zum Warenkorb hinzufügen
           </a>
         </div>
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg shadow-sm"
+        class="max-w-[382px] max-h-[369px] bg-primary_light border border-primary rounded-lg"
       >
-        <a href="#">
+        <a
+          href="javascript:void(0);"
+          class="relative h-[215px] w-[380px] block overflow-hidden"
+        >
           <img
-            class="rounded-t-lg"
+            class="rounded-t-lg absolute inset-0 w-full h-full object-cover"
             src="./src/img/Triceps_Dips_Muscles_Worked_1024x1024.webp"
             alt=""
           />
         </a>
         <div class="p-5">
-          <a href="#">
+          <a href="javascript:void(0);">
             <h5 class="mb-2 text-2xl font-bold text-primary">Dips</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
             Eine Grundübung für die Brust und Trizeps.
           </p>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
             onclick="addtoCart(this)"
           >
-            Hinzufügen
+            Zum Warenkorb hinzufügen
           </a>
         </div>
       </div>
       <!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
       <div
-        class="max-w-sm bg-primary_light border border-primary rounded-lg shadow-sm"
+        class="max-w-[382px] max-h-[369px] bg-primary_light border border-primary rounded-lg"
       >
-        <a href="#">
+        <a
+          href="javascript:void(0);"
+          class="relative h-[215px] w-[380px] block overflow-hidden"
+        >
           <img
-            class="rounded-t-lg"
+            class="rounded-t-lg absolute inset-0 w-full h-full object-cover"
             src="./src/img/close-grip-chin-up.webp"
             alt=""
           />
         </a>
         <div class="p-5">
-          <a href="#">
+          <a href="javascript:void(0);">
             <h5 class="mb-2 text-2xl font-bold text-primary">Chin-Up</h5>
           </a>
           <p class="mb-3 font-normal text-primary">
             Eine Grundübung für den Biceps.
           </p>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
             onclick="addtoCart(this)"
           >
-            Hinzufügen
+            Zum Warenkorb hinzufügen
           </a>
         </div>
       </div>
