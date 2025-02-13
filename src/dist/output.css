@@ -1099,6 +1099,10 @@ video {
   border-bottom-width: 2px;
 }
 
+.border-b-4 {
+  border-bottom-width: 4px;
+}
+
 .border-dashed {
   border-style: dashed;
 }
@@ -1111,6 +1115,11 @@ video {
 .border-secondary {
   --tw-border-opacity: 1;
   border-color: rgb(255 111 0 / var(--tw-border-opacity, 1));
+}
+
+.border-primary_light {
+  --tw-border-opacity: 1;
+  border-color: rgb(153 201 255 / var(--tw-border-opacity, 1));
 }
 
 .border-l-primary {
@@ -1259,6 +1268,10 @@ video {
 
 .pt-\[56\.25\%\] {
   padding-top: 56.25%;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 
 .text-center {

@@ -267,9 +267,13 @@ if (document.getElementById("workoutPlan") != null) {
 					</div>`;
       }
     }
-    document
-      .getElementById("workoutPlan")
-      .insertAdjacentHTML("beforeend", workoutPlanHTML);
+    // Supposed to fix border bug, but instead fixes redundant workout plan being generated kinda
+    setTimeout(() => {
+      document
+        .getElementById("workoutPlan")
+        .insertAdjacentHTML("beforeend", workoutPlanHTML);
+    }, 100);
+
     sessionStorage.setItem(
       "workoutPlanHTML",
       document.getElementById("workoutPlan").innerHTML
