@@ -1,22 +1,22 @@
 class Trainingsplan {
-  constructor(name, uebungen = []) {
-    this.name = name;
-    this.uebungen = uebungen;
-  }
+	constructor(name, uebungen = []) {
+		this.name = name;
+		this.uebungen = uebungen;
+	}
 }
 
 // Von chatGPT generiert (Prompt: generate motivational phrases for bodybuilding in js array) (07.02.2025)
 const motivationalPhrases = [
-  "Stärke wächst nicht aus körperlicher Kraft – vielmehr aus unbeugsamen Willen.",
-  "Deine einzige Grenze ist die, die du dir selbst setzt.",
-  "Erfolg ist das Ergebnis von harter Arbeit, Disziplin und Ausdauer.",
-  "Gib niemals auf, der Schmerz ist nur vorübergehend, der Stolz bleibt.",
-  "Du wirst nicht stärker, wenn du immer dasselbe tust.",
-  "Jeder Tag ist eine neue Chance, stärker zu werden.",
-  "Es gibt keine Abkürzungen zu einem Körper, auf den du stolz sein kannst.",
-  "Ziele sind das, was dich antreibt, der Wille ist der Weg.",
-  "Glaube an dich selbst, und der Rest wird folgen.",
-  "Schweiß ist nur das, was die Muskeln stärker macht.",
+	"Stärke wächst nicht aus körperlicher Kraft – vielmehr aus unbeugsamen Willen.",
+	"Deine einzige Grenze ist die, die du dir selbst setzt.",
+	"Erfolg ist das Ergebnis von harter Arbeit, Disziplin und Ausdauer.",
+	"Gib niemals auf, der Schmerz ist nur vorübergehend, der Stolz bleibt.",
+	"Du wirst nicht stärker, wenn du immer dasselbe tust.",
+	"Jeder Tag ist eine neue Chance, stärker zu werden.",
+	"Es gibt keine Abkürzungen zu einem Körper, auf den du stolz sein kannst.",
+	"Ziele sind das, was dich antreibt, der Wille ist der Weg.",
+	"Glaube an dich selbst, und der Rest wird folgen.",
+	"Schweiß ist nur das, was die Muskeln stärker macht.",
 ];
 
 let trainingsplaene = [];
@@ -24,50 +24,50 @@ let cart = [];
 
 // Übung dem Warenkorb hinzufügen
 function addtoCart(uebung) {
-  let uebungsname = uebung.parentNode;
-  cart.push(uebungsname.querySelector("h5").innerText);
-  console.table(cart);
-  addCartItems();
-  toggleNoti();
+	let uebungsname = uebung.parentNode;
+	cart.push(uebungsname.querySelector("h5").innerText);
+	console.table(cart);
+	addCartItems();
+	toggleNoti();
 }
 
 function deleteFromCart(index) {
-  cart.splice(index, 1);
-  addCartItems();
-  toggleNoti();
+	cart.splice(index, 1);
+	addCartItems();
+	toggleNoti();
 }
 
 function toggleNoti() {
-  if (cart.length != 0) {
-    let noti = document.getElementById("noti");
-    noti.innerText = cart.length;
-    noti.classList.add("flex");
-    noti.classList.remove("hidden");
-    let mobileNoti = document.getElementById("mobileNoti");
-    mobileNoti.innerText = cart.length;
-    mobileNoti.classList.add("flex");
-    mobileNoti.classList.remove("hidden");
-  }
+	if (cart.length != 0) {
+		let noti = document.getElementById("noti");
+		noti.innerText = cart.length;
+		noti.classList.add("flex");
+		noti.classList.remove("hidden");
+		let mobileNoti = document.getElementById("mobileNoti");
+		mobileNoti.innerText = cart.length;
+		mobileNoti.classList.add("flex");
+		mobileNoti.classList.remove("hidden");
+	}
 }
 
 // Warenkorb zur Anzeige bringen
 function toggleCart() {
-  const div = document.getElementById("cart");
-  div.classList.toggle("flex");
-  div.classList.toggle("-right-0"); // Move to screen
-  div.classList.toggle("-right-full"); // Offscreen to right
+	const div = document.getElementById("cart");
+	div.classList.toggle("flex");
+	div.classList.toggle("-right-0"); // Move to screen
+	div.classList.toggle("-right-full"); // Offscreen to right
 }
 
 // Warenkorbitems zur Anzeige bringen
 function addCartItems() {
-  let cartItems = document.getElementById("cartItems");
-  cartItems.innerHTML = "";
-  let cartItemsHTML = "";
-  if (cart.length != 0) {
-    for (let i = 0; i < cart.length; i++) {
-      const e = cart[i];
-      // Trashcan von ChatGPT generiert. Prompt: "trashcan svg" (14.02.2025)
-      cartItemsHTML += `    <div class="flex space-x-2 items-center">
+	let cartItems = document.getElementById("cartItems");
+	cartItems.innerHTML = "";
+	let cartItemsHTML = "";
+	if (cart.length != 0) {
+		for (let i = 0; i < cart.length; i++) {
+			const e = cart[i];
+			// Trashcan von ChatGPT generiert. Prompt: "trashcan svg" (14.02.2025)
+			cartItemsHTML += `    <div class="flex space-x-2 items-center">
       <p>${e}</p>
           <button type="button" class="p-1" onclick="deleteFromCart(${i})">
       <svg
@@ -84,22 +84,23 @@ function addCartItems() {
       </svg>
     </button>
     </div>`;
-    }
-    cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
-  }
+		}
+		cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
+	}
 }
 
 // Trainingsplannamen vergeben und Warenkorb danach ausblenden
 function createPlan() {
-  let trainingplanName = "";
-  trainingplanName = prompt("Geben Sie den Namen für den Trainingsplan ein:");
-  trainingsplaene.push(new Trainingsplan(trainingplanName, cart));
-  toggleCart();
+	let trainingplanName = "";
+	trainingplanName = prompt("Geben Sie den Namen für den Trainingsplan ein:");
+	trainingsplaene.push(new Trainingsplan(trainingplanName, cart));
+	toggleCart();
+	window.location.href = "trainingsplaene.html";
 }
 
 // Trainingspläne Tabubergreifend verfügbar machen
 function saveTrainingsplaene() {
-  sessionStorage.setItem("trainingsplaene", JSON.stringify(trainingsplaene));
+	sessionStorage.setItem("trainingsplaene", JSON.stringify(trainingsplaene));
 }
 
 // Von chatGPT generiert (Prompts: insert first motivational phrase into html element and replace that with the next one after 15 seconds. i want a transition for the replacement of text) (07.02.2025)
@@ -107,23 +108,23 @@ let i = 0;
 
 // Motivationssprüche
 function updateMotivation() {
-  const element = document.getElementById("motivationalPhrases");
-  if (element != null) {
-    // Fade-out effect
-    element.classList.add("opacity-0");
+	const element = document.getElementById("motivationalPhrases");
+	if (element != null) {
+		// Fade-out effect
+		element.classList.add("opacity-0");
 
-    setTimeout(() => {
-      // Change the text after fade-out
-      element.innerText = motivationalPhrases[i];
+		setTimeout(() => {
+			// Change the text after fade-out
+			element.innerText = motivationalPhrases[i];
 
-      // Fade-in effect
-      element.classList.remove("opacity-0");
-      element.classList.add("opacity-100");
+			// Fade-in effect
+			element.classList.remove("opacity-0");
+			element.classList.add("opacity-100");
 
-      // Update the index for the next phrase
-      i = (i + 1) % motivationalPhrases.length;
-    }, 1000); // Wait for the fade-out duration (1s)
-  }
+			// Update the index for the next phrase
+			i = (i + 1) % motivationalPhrases.length;
+		}, 1000); // Wait for the fade-out duration (1s)
+	}
 }
 
 updateMotivation();
@@ -131,61 +132,61 @@ setInterval(updateMotivation, 15000); // Updates every 15 seconds
 
 // Mobiles Menü zur Anzeige bringen
 function toggleMenu() {
-  document.getElementById("mobile-menu").classList.toggle("hidden");
-  let burger = document.getElementById("burger");
-  // Burger-Button secondary lassen, wenn er geklickt wurde
-  if (burger.classList.contains("text-primary")) {
-    burger.classList.replace("text-primary", "text-secondary");
-  } else if (burger.classList.contains("text-secondary")) {
-    burger.classList.replace("text-secondary", "text-primary");
-  }
+	document.getElementById("mobile-menu").classList.toggle("hidden");
+	let burger = document.getElementById("burger");
+	// Burger-Button secondary lassen, wenn er geklickt wurde
+	if (burger.classList.contains("text-primary")) {
+		burger.classList.replace("text-primary", "text-secondary");
+	} else if (burger.classList.contains("text-secondary")) {
+		burger.classList.replace("text-secondary", "text-primary");
+	}
 }
 
 // Sätze hoch- bzw. runterzählen
 function setsLogic(button, i, plan) {
-  let sets = document.getElementById("sets" + i + plan);
-  if (button.id == "setsIncrease") {
-    sets.value = parseInt(sets.value) + 1;
-  } else if (button.id == "setsDecrease") {
-    sets.value = parseInt(sets.value) - 1;
-  }
+	let sets = document.getElementById("sets" + i + plan);
+	if (button.id == "setsIncrease") {
+		sets.value = parseInt(sets.value) + 1;
+	} else if (button.id == "setsDecrease") {
+		sets.value = parseInt(sets.value) - 1;
+	}
 }
 
 // Wiederholungen hoch- bzw. runterzählen
 function repsLogic(button, i, plan) {
-  let reps = document.getElementById("reps" + i + plan);
-  if (button.id == "repsIncrease") {
-    reps.value = parseInt(reps.value) + 1;
-  } else if (button.id == "repsDecrease") {
-    reps.value = parseInt(reps.value) - 1;
-  }
+	let reps = document.getElementById("reps" + i + plan);
+	if (button.id == "repsIncrease") {
+		reps.value = parseInt(reps.value) + 1;
+	} else if (button.id == "repsDecrease") {
+		reps.value = parseInt(reps.value) - 1;
+	}
 }
 
 // Seite trainingsplaene.html dynamisch generieren
 let workoutPlanHTML;
 
 if (document.getElementById("workoutPlan") != null) {
-  // Gespeicherte Trainingsplaene holen
-  trainingsplaene = JSON.parse(sessionStorage.getItem("trainingsplaene"));
-  workoutPlanHTML = sessionStorage.getItem("workoutPlanHTML");
-  const [navEntry] = performance.getEntriesByType("navigation");
-  if (trainingsplaene != null) {
-    if (navEntry && navEntry.type !== "reload") {
-      for (let i = 0; i < trainingsplaene.length; i++) {
-        const e = trainingsplaene[i];
-        // Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
-        if (workoutPlanHTML == undefined) {
-          workoutPlanHTML = `<div class="w-full pb-2 border-b-4 border-primary_light">
+	// Gespeicherte Trainingsplaene holen
+	trainingsplaene = JSON.parse(sessionStorage.getItem("trainingsplaene"));
+	workoutPlanHTML = sessionStorage.getItem("workoutPlanHTML");
+	const [navEntry] = performance.getEntriesByType("navigation");
+	if (trainingsplaene != null) {
+		if (navEntry && navEntry.type !== "reload") {
+			for (let i = 0; i < trainingsplaene.length; i++) {
+				const e = trainingsplaene[i];
+				// Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
+				if (workoutPlanHTML == undefined) {
+					workoutPlanHTML = `<div class="w-full pb-2 border-b-4 border-primary_light">
 			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
 	  </div>`;
-        } else {
-          workoutPlanHTML += `<div class="w-full pb-2 border-b-4 border-primary_light">
+				} else {
+					workoutPlanHTML += `<div class="w-full pb-2 border-b-4 border-primary_light">
 			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
 	  </div>`;
-        }
-        for (let j = 0; j < e.uebungen.length; j++) {
-          const uebung = e.uebungen[j];
-          workoutPlanHTML += `<div class="w-full flex items-center space-x-2">
+				}
+				for (let j = 0; j < e.uebungen.length; j++) {
+					const uebung = e.uebungen[j];
+					workoutPlanHTML += `<div class="w-full flex items-center space-x-2">
 							<h2 class="text-xl sm:text-2xl font-bold">${uebung}</h2>
 						<div
 							class="border-b-2 border-dashed border-primary w-full flex-1"
@@ -291,16 +292,16 @@ if (document.getElementById("workoutPlan") != null) {
 							</div>
 						</div>
 					</div>`;
-        }
-      }
-    }
-    // Supposed to fix border bug, but instead fixes redundant workout plan being generated kinda
-    document
-      .getElementById("workoutPlan")
-      .insertAdjacentHTML("beforeend", workoutPlanHTML);
-    sessionStorage.setItem(
-      "workoutPlanHTML",
-      document.getElementById("workoutPlan").innerHTML
-    );
-  }
+				}
+			}
+		}
+		// Supposed to fix border bug, but instead fixes redundant workout plan being generated kinda
+		document
+			.getElementById("workoutPlan")
+			.insertAdjacentHTML("beforeend", workoutPlanHTML);
+		sessionStorage.setItem(
+			"workoutPlanHTML",
+			document.getElementById("workoutPlan").innerHTML
+		);
+	}
 }
