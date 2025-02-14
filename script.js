@@ -31,6 +31,12 @@ function addtoCart(uebung) {
   toggleNoti();
 }
 
+function deleteFromCart(index) {
+  cart.splice(index, 1);
+  addCartItems();
+  toggleNoti();
+}
+
 function toggleNoti() {
   if (cart.length != 0) {
     let noti = document.getElementById("noti");
@@ -58,9 +64,27 @@ function addCartItems() {
   cartItems.innerHTML = "";
   let cartItemsHTML = "";
   if (cart.length != 0) {
-    cart.forEach((e) => {
-      cartItemsHTML += `<p>${e}<p/>`;
-    });
+    for (let i = 0; i < cart.length; i++) {
+      const e = cart[i];
+      // Trashcan von ChatGPT generiert. Prompt: "trashcan svg" (14.02.2025)
+      cartItemsHTML += `    <div class="flex space-x-2 items-center">
+      <p>${e}</p>
+          <button type="button" class="p-1" onclick="deleteFromCart(${i})">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="currentColor"
+        class="w-6 h-6 text-primary fill-current hover:text-secondary transition duration-300"
+      >
+        <path
+          d="M9 3V2h6v1h5v2H4V3h5zm-3 4h12l-1.5 14h-9L6 7zm3 2v10h2V9H9zm4 0v10h2V9h-2z"
+        />
+      </svg>
+    </button>
+    </div>`;
+    }
     cartItems.insertAdjacentHTML("beforeend", cartItemsHTML);
   }
 }
