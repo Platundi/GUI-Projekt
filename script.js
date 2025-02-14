@@ -54,8 +54,8 @@ function toggleNoti() {
 function toggleCart() {
   const div = document.getElementById("cart");
   div.classList.toggle("flex");
-  div.classList.toggle("-right-full"); // Offscreen to right
   div.classList.toggle("-right-0"); // Move to screen
+  div.classList.toggle("-right-full"); // Offscreen to right
 }
 
 // Warenkorbitems zur Anzeige bringen
