@@ -168,7 +168,7 @@ if (document.getElementById("workoutPlan") != null) {
   // Gespeicherte Trainingsplaene holen
   trainingsplaene = JSON.parse(sessionStorage.getItem("trainingsplaene"));
   workoutPlanHTML = sessionStorage.getItem("workoutPlanHTML");
-  if (trainingsplaene.length != 0) {
+  if (trainingsplaene != null) {
     for (let i = 0; i < trainingsplaene.length; i++) {
       const e = trainingsplaene[i];
       // Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
@@ -199,7 +199,7 @@ if (document.getElementById("workoutPlan") != null) {
 								-
 							</button>
 							<div class="relative">
-								<label for="sets${j}" class="absolute top-[-1.3rem] -left-[0.2rem]"
+								<label for="sets${j}${e.name}" class="absolute top-[-1.3rem] -left-[0.2rem]"
 									>Sätze</label
 								>
 								<input
@@ -230,7 +230,7 @@ if (document.getElementById("workoutPlan") != null) {
 								-
 							</button>
 							<div class="relative">
-								<label for="reps${j}" class="absolute top-[-1.3rem] -left-[0.3rem]"
+								<label for="reps${j}${e.name}" class="absolute top-[-1.3rem] -left-[0.3rem]"
 									>Wied.</label
 								>
 								<input
@@ -255,13 +255,13 @@ if (document.getElementById("workoutPlan") != null) {
 						<div class="flex space-x-2 font-bold sm:hidden">
 							<div class="relative">
 								<label
-									for="mobileSets"
+									for=""
 									class="text-xs block absolute top-[-1rem] left-[0.30rem]"
 									>Sätze</label
 								>
 								<input
 									type="tel"
-									id="mobileSets"
+									id=""
 									class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
 									value="0"
 									min="0"
@@ -272,13 +272,13 @@ if (document.getElementById("workoutPlan") != null) {
 							</div>
 							<div class="relative">
 								<label
-									for="mobileReps"
+									for=""
 									class="text-xs block absolute top-[-1rem] left-[0.30rem]"
 									>Wied.</label
 								>
 								<input
 									type="tel"
-									id="mobileReps"
+									id=""
 									class="max-w-10 max-h-8 border-2 border-primary bg-white rounded-md py-0.5 px-1 box-border text-center"
 									value="0"
 									min="0"
