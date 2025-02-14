@@ -168,22 +168,24 @@ if (document.getElementById("workoutPlan") != null) {
   // Gespeicherte Trainingsplaene holen
   trainingsplaene = JSON.parse(sessionStorage.getItem("trainingsplaene"));
   workoutPlanHTML = sessionStorage.getItem("workoutPlanHTML");
+  const [navEntry] = performance.getEntriesByType("navigation");
   if (trainingsplaene != null) {
-    for (let i = 0; i < trainingsplaene.length; i++) {
-      const e = trainingsplaene[i];
-      // Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
-      if (workoutPlanHTML == undefined) {
-        workoutPlanHTML = `<div class="w-full pb-2 border-b-4 border-primary_light">
+    if (navEntry && navEntry.type !== "reload") {
+      for (let i = 0; i < trainingsplaene.length; i++) {
+        const e = trainingsplaene[i];
+        // Wenn noch kein HTML vorhanden ist workoutPlanHTML initialisieren, ansonsten
+        if (workoutPlanHTML == undefined) {
+          workoutPlanHTML = `<div class="w-full pb-2 border-b-4 border-primary_light">
 			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
 	  </div>`;
-      } else {
-        workoutPlanHTML += `<div class="w-full pb-2 border-b-4 border-primary_light">
+        } else {
+          workoutPlanHTML += `<div class="w-full pb-2 border-b-4 border-primary_light">
 			<h2 class="text-2xl sm:text-4xl font-bold">${e.name}</h2>
 	  </div>`;
-      }
-      for (let j = 0; j < e.uebungen.length; j++) {
-        const uebung = e.uebungen[j];
-        workoutPlanHTML += `<div class="w-full flex items-center space-x-2">
+        }
+        for (let j = 0; j < e.uebungen.length; j++) {
+          const uebung = e.uebungen[j];
+          workoutPlanHTML += `<div class="w-full flex items-center space-x-2">
 							<h2 class="text-xl sm:text-2xl font-bold">${uebung}</h2>
 						<div
 							class="border-b-2 border-dashed border-primary w-full flex-1"
@@ -289,15 +291,13 @@ if (document.getElementById("workoutPlan") != null) {
 							</div>
 						</div>
 					</div>`;
+        }
       }
     }
     // Supposed to fix border bug, but instead fixes redundant workout plan being generated kinda
-    setTimeout(() => {
-      document
-        .getElementById("workoutPlan")
-        .insertAdjacentHTML("beforeend", workoutPlanHTML);
-    }, 100);
-
+    document
+      .getElementById("workoutPlan")
+      .insertAdjacentHTML("beforeend", workoutPlanHTML);
     sessionStorage.setItem(
       "workoutPlanHTML",
       document.getElementById("workoutPlan").innerHTML
