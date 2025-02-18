@@ -300,13 +300,14 @@ if (document.getElementById("workoutPlan") != null) {
         }
       }
     }
-    // Supposed to fix border bug, but instead fixes redundant workout plan being generated kinda
-    document
-      .getElementById("workoutPlan")
-      .insertAdjacentHTML("beforeend", workoutPlanHTML);
-    sessionStorage.setItem(
-      "workoutPlanHTML",
-      document.getElementById("workoutPlan").innerHTML
-    );
+    if (workoutPlanHTML != null) {
+      document
+        .getElementById("workoutPlan")
+        .insertAdjacentHTML("beforeend", workoutPlanHTML);
+      sessionStorage.setItem(
+        "workoutPlanHTML",
+        document.getElementById("workoutPlan").innerHTML
+      );
+    }
   }
 }
