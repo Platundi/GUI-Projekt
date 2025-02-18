@@ -53,9 +53,13 @@ function toggleNoti() {
 // Warenkorb zur Anzeige bringen
 function toggleCart() {
   const div = document.getElementById("cart");
+  const darken = document.getElementById("darken");
   div.classList.toggle("flex");
   div.classList.toggle("-right-0"); // Move to screen
   div.classList.toggle("-right-full"); // Offscreen to right
+  setTimeout(() => {
+    darken.classList.toggle("hidden");
+  }, 150);
 }
 
 // Warenkorbitems zur Anzeige bringen
@@ -99,7 +103,7 @@ function createPlan() {
   window.location.href = "trainingsplaene.html";
 }
 
-// Trainingspläne Tabubergreifend verfügbar machen
+// Trainingspläne Seitenuebergreifend verfügbar machen
 function saveTrainingsplaene() {
   sessionStorage.setItem("trainingsplaene", JSON.stringify(trainingsplaene));
 }
