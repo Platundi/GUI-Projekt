@@ -199,6 +199,7 @@
               stroke-linejoin="round"
             />
 
+<<<<<<< Updated upstream
             <!-- Räder -->
             <circle cx="9" cy="20" r="2" />
             <circle cx="17" cy="20" r="2" />
@@ -375,6 +376,189 @@
               stroke-width="6"
               fill="none"
             />
+=======
+						<!-- Räder -->
+						<circle cx="9" cy="20" r="2" />
+						<circle cx="17" cy="20" r="2" />
+					</svg>
+				</button>
+				<div
+					id="cartItems"
+					class="min-h-[80%] overflow-y-auto flex-grow-0 space-y-2 flex flex-col text-xl text-primary font-bold"
+				></div>
+				<button
+					id="createPlan"
+					onclick="createPlan()"
+					type="button"
+					class="overflow-hidden py-3 px-5 text-sm font-medium border-primary border-2 text-center text-primary rounded-lg bg-secondary sm:w-fit hover:bg-secondary_focus focus:ring-2 focus:outline-none focus:ring-primary outline-none"
+				>
+					Zum Trainingsplan <br />
+					hinzufügen
+				</button>
+			</div>
+			<!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
+			<div
+				class="max-w-sm w-full bg-primary_light border border-primary rounded-lg"
+			>
+				<a href="javascript:void(0);">
+					<!-- https://training.fit/exercise/benchpress/ -->
+					<img
+						class="rounded-t-lg w-full h-48 object-cover"
+						src="./src/img/bankdruecken-langhantel.png"
+						alt=""
+					/>
+				</a>
+				<div class="p-5 flex-1">
+					<a href="javascript:void(0);">
+						<h5 class="mb-2 text-2xl font-bold text-primary">Bankdrücken</h5>
+					</a>
+					<p class="mb-3 font-normal text-primary">
+						Eine bilaterale Grundübung für die Brust.
+					</p>
+					<a
+						href="javascript:void(0);"
+						class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
+						onclick="addtoCart(this)"
+					>
+						Zum Warenkorb hinzufügen
+					</a>
+				</div>
+			</div>
+			<!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
+			<div
+				class="max-w-sm w-full bg-primary_light border border-primary rounded-lg"
+			>
+				<a href="javascript:void(0);">
+					<!-- https://homegymsupply.co.uk/blogs/guides/trap-bar-deadlift-muscles-worked -->
+					<img
+						class="rounded-t-lg w-full h-48 object-cover"
+						src="./src/img/How_To_Do_a_Trap_Bar_Deadlift_Step-by-Step.webp"
+						alt=""
+					/>
+				</a>
+				<div class="p-5 flex-1">
+					<a href="javascript:void(0);">
+						<h5 class="mb-2 text-2xl font-bold text-primary">Kreuzheben</h5>
+					</a>
+					<p class="mb-3 font-normal text-primary">
+						Eine Grundübung für den Rücken.
+					</p>
+					<a
+						href="javascript:void(0);"
+						class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
+						onclick="addtoCart(this)"
+					>
+						Zum Warenkorb hinzufügen
+					</a>
+				</div>
+			</div>
+			<!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
+			<div
+				class="max-w-sm w-full bg-primary_light border border-primary rounded-lg"
+			>
+				<a href="javascript:void(0);">
+					<!-- https://kinxlearning.com/pages/squat -->
+					<img
+						class="rounded-t-lg w-full h-48 object-cover"
+						src="./src/img/squats.webp"
+						alt=""
+					/>
+				</a>
+				<div class="p-5">
+					<a href="javascript:void(0);">
+						<h5 class="mb-2 text-2xl font-bold text-primary">Squats</h5>
+					</a>
+					<p class="mb-3 font-normal text-primary">
+						Eine Grundübung für die Beine.
+					</p>
+					<a
+						href="javascript:void(0);"
+						class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
+						onclick="addtoCart(this)"
+					>
+						Zum Warenkorb hinzufügen
+					</a>
+				</div>
+			</div>
+			<!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
+			<div
+				class="max-w-sm w-full bg-primary_light border border-primary rounded-lg"
+			>
+				<a href="javascript:void(0);">
+					<!-- https://swolverine.com/en-de/blogs/blog/what-muscles-do-dips-work -->
+					<img
+						class="rounded-t-lg w-full h-48 object-cover"
+						src="./src/img/Triceps_Dips_Muscles_Worked_1024x1024.webp"
+						alt=""
+					/>
+				</a>
+				<div class="p-5">
+					<a href="javascript:void(0);">
+						<h5 class="mb-2 text-2xl font-bold text-primary">Dips</h5>
+					</a>
+					<p class="mb-3 font-normal text-primary">
+						Eine Grundübung für den Trizeps.
+					</p>
+					<a
+						href="javascript:void(0);"
+						class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
+						onclick="addtoCart(this)"
+					>
+						Zum Warenkorb hinzufügen
+					</a>
+				</div>
+			</div>
+			<!-- Card-Code von https://flowbite.com/docs/components/card/ (04.02.2025) -->
+			<div
+				class="max-w-sm w-full bg-primary_light border border-primary rounded-lg"
+			>
+				<a href="javascript:void(0);">
+					<!-- https://liftmanual.com/close-grip-chin-up/ -->
+					<img
+						class="rounded-t-lg w-full h-48 object-cover"
+						src="./src/img/close-grip-chin-up.webp"
+						alt=""
+					/>
+				</a>
+				<div class="p-5">
+					<a href="javascript:void(0);">
+						<h5 class="mb-2 text-2xl font-bold text-primary">Chin-Up</h5>
+					</a>
+					<p class="mb-3 font-normal text-primary">
+						Eine Grundübung für den Biceps.
+					</p>
+					<a
+						href="javascript:void(0);"
+						class="inline-flex active:scale-95 items-center border border-primary px-3 py-2 text-sm font-medium text-center text-primary bg-secondary rounded-lg hover:bg-secondary_focus transition duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300"
+						onclick="addtoCart(this)"
+					>
+						Zum Warenkorb hinzufügen
+					</a>
+				</div>
+			</div>
+		</div>
+		<footer class="bg-primary_light text-primary py-6 z-10">
+			<div
+				class="container mx-auto flex flex-col md:flex-row items-center justify-between px-10"
+			>
+				<!-- Logo & Name -->
+				<div class="flex items-center space-x-2">
+					<!-- SVG-Logo von ChatGPT generiert. Prompts: "svg which is displaying 3 T's", "please place 2 T's above the other one. also make a circle around them" (03.02.2025)  -->
+					<svg
+						class="w-8 h-8 fill-primary stroke-primary"
+						viewBox="0 0 100 100"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<!-- Circle Outline -->
+						<circle
+							cx="50"
+							cy="50"
+							r="45"
+							stroke="secondary"
+							stroke-width="6"
+							fill="none"
+						/>
+>>>>>>> Stashed changes
 
             <!-- Top-left T -->
             <rect x="25" y="20" width="20" height="5" fill="primary" />
